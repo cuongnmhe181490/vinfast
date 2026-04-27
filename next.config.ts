@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
       {
         key: "Content-Security-Policy",
         value:
-          `default-src 'self'; ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://vinfastauto.com https://shop.vinfastauto.com https://static-cms-prod.vinfastauto.com; font-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests`,
+          `default-src 'self'; ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://vinfastauto.com https://shop.vinfastauto.com https://static-cms-prod.vinfastauto.com; font-src 'self' data:; connect-src 'self'; frame-src https://sketchfab.com https://*.sketchfab.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests`,
       },
       { key: "X-Content-Type-Options", value: "nosniff" },
       { key: "X-Frame-Options", value: "SAMEORIGIN" },

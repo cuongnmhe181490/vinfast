@@ -15,10 +15,24 @@ export type ProductPhotoAsset = {
   attribution: string;
 };
 
+export type PreciseModelAsset = {
+  provider: "sketchfab";
+  uid: string;
+  title: string;
+  sourceUrl: string;
+  embedUrl: string;
+  author: string;
+  license: string;
+  scope: "exterior-only" | "full-vehicle";
+  triangles?: string;
+  notes: string;
+};
+
 export type VehicleAssetManifest = {
   modelId: string;
   renderImageUrl: string;
   productPhoto?: ProductPhotoAsset;
+  preciseModel?: PreciseModelAsset;
   exteriorModelUrl: string | null;
   interiorModelUrl: string | null;
   partsModelUrl: string | null;
@@ -127,11 +141,101 @@ const productPhotos: Record<string, ProductPhotoAsset> = {
   },
 };
 
+const preciseModels: Record<string, PreciseModelAsset> = {
+  "vf-3": sketchfabModel({
+    uid: "8751c1412f4a4ebba789e8245c28f929",
+    title: "Vinfast VF3",
+    author: "Leo Tran",
+    license: "Sketchfab embed; exterior-only model, contact creator for commercial/download licensing",
+    scope: "exterior-only",
+    triangles: "1.3M",
+    notes: "High-detail exterior model based on public references. Interior is not included.",
+  }),
+  "vf-5": sketchfabModel({
+    uid: "1e016aeca166429fa442c9e6f25e8f1d",
+    title: "Vinfast VF5",
+    author: "Leo Tran",
+    license: "Sketchfab embed; exterior-only model, contact creator for commercial/download licensing",
+    scope: "exterior-only",
+    triangles: "1.2M",
+    notes: "High-detail exterior model based on public references. Interior is not included.",
+  }),
+  "vf-6": sketchfabModel({
+    uid: "aa05ba4d64334f218386fb51c1e3eecd",
+    title: "Vinfast VF6",
+    author: "Leo Tran",
+    license: "Sketchfab embed; exterior-only model, contact creator for commercial/download licensing",
+    scope: "exterior-only",
+    triangles: "1.2M",
+    notes: "High-detail exterior model based on public references. Interior is not included.",
+  }),
+  "vf-7": sketchfabModel({
+    uid: "0267de9d28c3420db5fc525b9d241007",
+    title: "Vinfast VF7",
+    author: "Leo Tran",
+    license: "Sketchfab embed; exterior-only model, contact creator for commercial/download licensing",
+    scope: "exterior-only",
+    triangles: "1.8M",
+    notes: "High-detail exterior model based on public references. Interior is not included.",
+  }),
+  "vf-8": sketchfabModel({
+    uid: "510ee60176644d89a35ff9e270088c88",
+    title: "Vinfast VF8 concept",
+    author: "Leo Tran",
+    license: "Sketchfab embed; exterior-only model, contact creator for commercial/download licensing",
+    scope: "exterior-only",
+    triangles: "3M",
+    notes: "High-detail exterior concept model. Interior is not included.",
+  }),
+  "vf-9": sketchfabModel({
+    uid: "eb0bf6c601944289aac22f99485af0f5",
+    title: "Vinfast VF9",
+    author: "Leo Tran",
+    license: "Sketchfab embed; exterior-only model, contact creator for commercial/download licensing",
+    scope: "exterior-only",
+    triangles: "1.9M",
+    notes: "High-detail exterior model based on public references. Interior is not included.",
+  }),
+  "vf-e34": sketchfabModel({
+    uid: "a24da5d6c3c74dc4af63563e96b7f6a5",
+    title: "Vf E34",
+    author: "thangnguyen.solutionspace",
+    license: "CC Attribution via Sketchfab",
+    scope: "exterior-only",
+    triangles: "418.8k",
+    notes: "User-contributed downloadable model; verify quality before production use.",
+  }),
+};
+
+function sketchfabModel({
+  uid,
+  title,
+  author,
+  license,
+  scope,
+  triangles,
+  notes,
+}: Omit<PreciseModelAsset, "provider" | "sourceUrl" | "embedUrl">): PreciseModelAsset {
+  return {
+    provider: "sketchfab",
+    uid,
+    title,
+    sourceUrl: `https://sketchfab.com/3d-models/${title.toLowerCase().replaceAll(" ", "-")}-${uid}`,
+    embedUrl: `https://sketchfab.com/models/${uid}/embed?autostart=1&preload=1&ui_infos=0&ui_ar=0&ui_help=0&ui_settings=0&ui_watermark=1`,
+    author,
+    license,
+    scope,
+    triangles,
+    notes,
+  };
+}
+
 export function getVehicleAssetManifest(modelId: string): VehicleAssetManifest {
   return {
     modelId,
     renderImageUrl: `/assets/renders/vehicles/${modelId}.svg`,
     productPhoto: productPhotos[modelId],
+    preciseModel: preciseModels[modelId],
     exteriorModelUrl: null,
     interiorModelUrl: null,
     partsModelUrl: null,

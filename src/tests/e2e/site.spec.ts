@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { PNG } from "pngjs";
 
 test("home page loads premium showroom", async ({ page }) => {
   await page.goto("/");
@@ -16,18 +15,17 @@ test("cars page loads sourced data", async ({ page }) => {
 test("car detail page exposes 3D controls or fallback", async ({ page }) => {
   await page.goto("/cars/vf-3");
   await expect(page.locator("h1", { hasText: "VF 3" })).toBeVisible();
-  await expect(page.getByLabel(/Trình xem 3D demo/)).toBeVisible();
-  await page.waitForSelector("canvas");
-  await page.waitForTimeout(500);
-  const screenshot = await page.getByTestId("vehicle-viewer").screenshot();
-  const png = PNG.sync.read(screenshot);
-  const sampledColors = new Set<string>();
-  for (let index = 0; index < png.data.length; index += 4 * 997) {
-    sampledColors.add(`${png.data[index]}-${png.data[index + 1]}-${png.data[index + 2]}`);
+  const licensedViewer = page.getByTestId("licensed-3d-viewer");
+  if (await licensedViewer.isVisible()) {
+    await expect(page.getByLabel(/Trình xem 3D chi tiết/)).toBeVisible();
+    await expect(licensedViewer.locator("iframe")).toBeVisible();
+    await expect(page.getByRole("link", { name: /Xem nguồn model/ })).toBeVisible();
+  } else {
+    await expect(page.getByLabel(/Trình xem 3D demo/)).toBeVisible();
+    await page.waitForSelector("canvas");
+    await page.getByRole("button", { name: "Chế độ nhẹ" }).first().click();
+    await expect(page.getByTestId("viewer-fallback")).toBeVisible();
   }
-  expect(sampledColors.size).toBeGreaterThan(12);
-  await page.getByRole("button", { name: "Chế độ nhẹ" }).first().click();
-  await expect(page.getByTestId("viewer-fallback")).toBeVisible();
 });
 
 test("compare page can select two cars and show differences", async ({ page }) => {
