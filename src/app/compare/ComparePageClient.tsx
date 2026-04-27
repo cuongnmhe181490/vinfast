@@ -9,8 +9,7 @@ import { compareCategories, type CompareCategory } from "@/lib/compare";
 import { trackEvent } from "@/lib/analytics";
 
 export function ComparePageClient({ cars, initialIds }: { cars: CarModel[]; initialIds: string[] }) {
-  const fallbackIds = cars.slice(0, 2).map((car) => car.modelId);
-  const [selectedIds, setSelectedIds] = useState(initialIds.length ? initialIds : fallbackIds);
+  const [selectedIds, setSelectedIds] = useState(initialIds);
   const [category, setCategory] = useState<CompareCategory | "all">("all");
   const [differencesOnly, setDifferencesOnly] = useState(false);
   const selectedCars = useMemo(

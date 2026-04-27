@@ -14,8 +14,8 @@ export function ModelHighlights({ cars }: { cars: CarModel[] }) {
         </p>
       </div>
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {cars.slice(0, 6).map((car) => (
-          <CarCard key={car.modelId} car={car} />
+        {cars.slice(0, 6).map((car, index) => (
+          <CarCard key={car.modelId} car={car} priority={index < 3} />
         ))}
       </div>
     </section>

@@ -1,8 +1,8 @@
 # VF Showcase Demo
 
-Premium Next.js showroom demo for exploring VinFast vehicle lines with generated vehicle renders, CC0 generic 3D demo models, sourced seed data, SEO routes and enterprise-style documentation.
+Premium Next.js showroom demo for exploring VinFast vehicle lines with licensed Commons photos, generated vehicle renders, a procedural 3D demo model, sourced seed data, SEO routes and enterprise-style documentation.
 
-This is a portfolio/demo website. It is not the official VinFast website and does not bundle official VinFast logos, photos or 3D models.
+This is a portfolio/demo website. It is not the official VinFast website and does not bundle official VinFast logos or official 3D models. Product photos are used only when a public license is recorded in the asset manifest.
 
 ## Stack
 

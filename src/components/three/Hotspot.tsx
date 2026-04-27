@@ -15,7 +15,7 @@ export function Hotspot({ hotspot, onSelect }: HotspotProps) {
         type="button"
         aria-label={`Xem hotspot ${hotspot.label}`}
         onClick={() => onSelect(hotspot)}
-        className="grid h-9 w-9 place-items-center rounded-full border border-white/80 bg-accent text-sm font-bold text-white shadow-xl ring-4 ring-accent/20 transition hover:scale-110"
+        className="grid h-7 w-7 place-items-center rounded-full border border-white/80 bg-accent text-xs font-bold text-white shadow-xl ring-[5px] ring-accent/20 transition hover:scale-110"
       >
         i
       </button>

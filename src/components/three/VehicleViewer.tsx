@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { Component, Suspense, useState, type ReactNode } from "react";
+import { Component, Suspense, useEffect, useState, type ReactNode } from "react";
 import {
   Box,
   CarFront,
@@ -52,6 +52,14 @@ export function VehicleViewer({ car, compact = false }: VehicleViewerProps) {
     setColor,
     reset,
   } = useVehicleStore();
+  const viewerHeight = compact ? "min-h-[520px] sm:min-h-[580px]" : "min-h-[660px] sm:min-h-[720px]";
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setAutoRotate(false);
+    }
+  }, [setAutoRotate]);
 
   if (!webglReady || lowPower) {
     return <Fallback3DCard car={car} reason={lowPower ? "Bạn đang bật chế độ nhẹ." : undefined} />;
@@ -60,25 +68,31 @@ export function VehicleViewer({ car, compact = false }: VehicleViewerProps) {
   return (
     <section
       data-testid="vehicle-viewer"
-      className={`relative overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-soft ${
-        compact ? "min-h-[460px]" : "min-h-[620px]"
-      }`}
+      className={`relative overflow-hidden rounded-[28px] border border-white/70 bg-[radial-gradient(circle_at_50%_15%,#ffffff_0%,#e7f7ff_48%,#f7fbff_100%)] shadow-soft ${viewerHeight}`}
       aria-label={`Trình xem 3D demo cho ${car.name}`}
     >
-      <div className="absolute left-5 top-5 z-10 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-accent-strong backdrop-blur">
-        {manifest.assetStatus === "licensed-demo" ? "3D demo CC0" : "3D demo placeholder"}
+      <div className="pointer-events-none absolute inset-x-10 bottom-[26%] h-20 rounded-[50%] bg-accent-strong/10 blur-3xl" />
+      <div className="absolute left-5 top-5 z-10 rounded-full bg-white/82 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-accent-strong backdrop-blur">
+        {manifest.assetStatus === "licensed-production" ? "3D production asset" : "Mô phỏng 3D tự tạo"}
+      </div>
+      <div className="absolute right-5 top-5 z-10 hidden rounded-full bg-white/76 px-4 py-2 text-xs font-semibold text-muted backdrop-blur sm:block">
+        Kéo để xoay · cuộn để zoom
       </div>
       <ViewerErrorBoundary fallback={<Fallback3DCard car={car} reason="Trình 3D gặp lỗi runtime, fallback thông số đã được kích hoạt." />}>
         <Canvas
           shadows="basic"
-          camera={{ position: [4.2, 2.4, 5.2], fov: 42 }}
-          dpr={[1, 1.7]}
+          camera={{
+            position: compact ? [4.5, 1.65, 5.25] : [5.8, 2.15, 6.8],
+            fov: compact ? 31 : 40,
+          }}
+          dpr={[1, 1.8]}
           gl={{ antialias: true, powerPreference: "high-performance" }}
-          className="min-h-[460px]"
+          className={viewerHeight}
         >
           <Suspense fallback={null}>
             <VehicleScene
               car={car}
+              showHotspots={!compact}
               onHotspotSelect={(hotspot) => {
                 setSelectedHotspot(hotspot);
               }}
@@ -87,6 +101,13 @@ export function VehicleViewer({ car, compact = false }: VehicleViewerProps) {
         </Canvas>
       </ViewerErrorBoundary>
 
+      {compact ? (
+        <div className="pointer-events-none absolute inset-x-4 bottom-4 z-10 flex flex-wrap justify-center gap-2">
+          <MiniMetric label="Quãng đường" value={formatSpec(car.rangeKm, "km")} />
+          <MiniMetric label="Công suất" value={formatSpec(car.powerKw, "kW")} />
+          <MiniMetric label="Số chỗ" value={formatSpec(car.seats, "chỗ")} />
+        </div>
+      ) : (
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 grid gap-4 p-4 md:grid-cols-[1fr_auto] md:p-6">
         <div className="pointer-events-auto grid gap-3 rounded-[24px] border border-white/70 bg-white/82 p-3 backdrop-blur-xl md:max-w-[560px]">
           <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
@@ -198,9 +219,10 @@ export function VehicleViewer({ car, compact = false }: VehicleViewerProps) {
           <ExplodedViewController />
         </div>
       </div>
+      )}
 
       {selectedHotspot ? (
-        <div className="absolute right-5 top-20 z-20 w-[min(330px,calc(100%-40px))] rounded-[24px] border border-white/75 bg-white/90 p-5 shadow-soft backdrop-blur">
+        <div className="absolute left-5 top-20 z-20 w-[min(310px,calc(100%-40px))] rounded-[24px] border border-white/75 bg-white/90 p-5 shadow-soft backdrop-blur">
           <button
             type="button"
             aria-label="Đóng hotspot"
@@ -238,6 +260,15 @@ function Metric({ label, value }: { label: string; value: string }) {
     <div className="rounded-2xl bg-surface-soft/90 p-3">
       <p className="text-muted">{label}</p>
       <p className="mt-1 font-semibold text-accent-strong">{value}</p>
+    </div>
+  );
+}
+
+function MiniMetric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-full border border-white/70 bg-white/82 px-4 py-2 text-xs shadow-sm backdrop-blur">
+      <span className="text-muted">{label}: </span>
+      <span className="font-semibold text-accent-strong">{value}</span>
     </div>
   );
 }

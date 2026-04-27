@@ -19,7 +19,7 @@ export function CarDetailHero({ car }: { car: CarModel }) {
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">{car.segment}</p>
         <h1 className="mt-4 text-5xl font-semibold tracking-normal text-accent-strong sm:text-6xl">{car.name}</h1>
         <p className="mt-5 max-w-xl text-lg leading-8 text-muted">
-          Trang chi tiết demo với model 3D CC0, render tự tạo, hotspot kỹ thuật, bảng thông số có nguồn và CTA chuyển tới nguồn chính thức.
+          Trang chi tiết demo với mô phỏng 3D tự tạo, render studio hợp pháp, hotspot kỹ thuật, bảng thông số có nguồn và CTA chuyển tới nguồn chính thức.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link

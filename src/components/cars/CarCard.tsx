@@ -5,23 +5,32 @@ import { getVehicleAssetManifest } from "@/data/asset-manifest";
 import type { CarModel } from "@/data/schemas/car.schema";
 import { formatSpec } from "@/lib/format";
 
-export function CarCard({ car }: { car: CarModel }) {
+export function CarCard({ car, priority = false }: { car: CarModel; priority?: boolean }) {
   const manifest = getVehicleAssetManifest(car.modelId);
+  const visual = manifest.productPhoto ?? {
+    url: manifest.renderImageUrl,
+    alt: `Ảnh render demo tự tạo cho ${car.name}, không phải ảnh chính thức của VinFast`,
+    license: "Generated demo render",
+  };
 
   return (
     <article className="group rounded-[28px] border border-line bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
       <div className="relative grid aspect-[1.55] place-items-center overflow-hidden rounded-[22px] bg-gradient-to-br from-accent-soft via-white to-surface-soft">
         <Image
-          src={manifest.renderImageUrl}
-          alt={`Ảnh render demo tự tạo cho ${car.name}, không phải ảnh chính thức của VinFast`}
+          src={visual.url}
+          alt={visual.alt}
           fill
+          priority={priority}
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
           className="object-cover transition duration-500 group-hover:scale-[1.035]"
         />
         <span className="absolute bottom-3 right-3 rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold text-accent-strong backdrop-blur">
-          Demo render
+          {manifest.productPhoto ? "Ảnh CC" : "Demo render"}
         </span>
       </div>
+      <p className="mt-3 truncate text-xs text-muted">
+        {manifest.productPhoto ? `${manifest.productPhoto.sourceName} · ${manifest.productPhoto.license}` : visual.license}
+      </p>
       <div className="mt-5 flex items-start justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">{car.segment}</p>

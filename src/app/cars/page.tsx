@@ -23,8 +23,8 @@ export default function CarsPage() {
           Mỗi record có source URL, ngày kiểm tra và confidence score. Trường thiếu sẽ hiển thị đang cập nhật thay vì tự suy đoán.
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {cars.map((car) => (
-            <CarCard key={car.modelId} car={car} />
+          {cars.map((car, index) => (
+            <CarCard key={car.modelId} car={car} priority={index < 3} />
           ))}
         </div>
       </section>
