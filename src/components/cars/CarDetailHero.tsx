@@ -18,16 +18,32 @@ export function CarDetailHero({ car }: { car: CarModel }) {
   const manifest = getVehicleAssetManifest(car.modelId);
 
   return (
-    <section className="section-shell grid gap-8 py-8 lg:grid-cols-[0.86fr_1.14fr] lg:py-12">
-      <div className="flex flex-col justify-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">{car.segment}</p>
-        <h1 className="mt-4 text-5xl font-semibold tracking-normal text-accent-strong sm:text-6xl">{car.name}</h1>
-        <p className="mt-5 max-w-xl text-lg leading-8 text-muted">
-          {manifest.preciseModel
-            ? "Trang chi tiết ưu tiên model 3D ngoại thất chi tiết từ nguồn public có attribution. Nội thất, pin, mô-tơ và exploded-view chuẩn CAD cần asset licensed riêng."
-            : "Trang chi tiết demo với mô phỏng 3D tự tạo, render studio hợp pháp, hotspot kỹ thuật, bảng thông số có nguồn và CTA chuyển tới nguồn chính thức."}
-        </p>
-        <div className="mt-7 flex flex-wrap gap-3">
+    <section className="bg-[radial-gradient(circle_at_55%_0%,#e3f7ff_0%,#f7fbff_38%,#ffffff_100%)]">
+      <div className="section-shell py-6 md:py-8">
+        <div className="mb-5 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">{car.segment}</p>
+            <h1 className="mt-3 text-5xl font-semibold tracking-normal text-accent-strong sm:text-6xl">
+              {car.name} 3D chi tiết
+            </h1>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-muted md:text-lg">
+              {manifest.preciseModel
+                ? "Model ngoại thất chi tiết từ nguồn public có attribution, đặt làm trải nghiệm chính của trang xe."
+                : "Mô phỏng 3D tự tạo, render studio hợp pháp, hotspot kỹ thuật và bảng thông số có nguồn."}
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-wrap gap-3">
+            {manifest.preciseModel ? (
+              <a
+                href={manifest.preciseModel.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-5 py-3 text-sm font-semibold text-accent-strong transition hover:border-accent"
+              >
+                Nguồn model
+                <ArrowUpRight size={17} aria-hidden />
+              </a>
+            ) : null}
           <Link
             href={`/compare?cars=${car.modelId}`}
             className="inline-flex items-center gap-2 rounded-full bg-accent-strong px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent"
@@ -45,13 +61,28 @@ export function CarDetailHero({ car }: { car: CarModel }) {
             Xem nguồn dữ liệu
             <ArrowUpRight size={17} aria-hidden />
           </a>
+          </div>
         </div>
+        {manifest.preciseModel ? (
+          <>
+            <SketchfabVehicleViewer car={car} model={manifest.preciseModel} />
+            <div className="mt-4 grid gap-3 rounded-[24px] border border-line bg-white/80 p-4 text-xs leading-5 text-muted backdrop-blur md:grid-cols-3">
+              <p>
+                <span className="font-semibold text-accent-strong">License:</span> {manifest.preciseModel.license}
+              </p>
+              <p>
+                <span className="font-semibold text-accent-strong">Độ chi tiết:</span>{" "}
+                {manifest.preciseModel.triangles ?? "Đang cập nhật"}
+              </p>
+              <p>
+                <span className="font-semibold text-accent-strong">Giới hạn:</span> Chưa có CAD nội thất, pin, mô-tơ và exploded-view chuẩn.
+              </p>
+            </div>
+          </>
+        ) : (
+          <VehicleViewer car={car} />
+        )}
       </div>
-      {manifest.preciseModel ? (
-        <SketchfabVehicleViewer car={car} model={manifest.preciseModel} />
-      ) : (
-        <VehicleViewer car={car} />
-      )}
     </section>
   );
 }
