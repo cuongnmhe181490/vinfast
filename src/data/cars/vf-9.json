@@ -1,0 +1,57 @@
+{
+  "modelId": "vf-9",
+  "slug": "vf-9",
+  "name": "VF 9",
+  "segment": "SUV hạng E",
+  "bodyStyle": "SUV 6 hoặc 7 chỗ",
+  "versions": ["VF 9 Eco", "VF 9 Plus"],
+  "priceListedVnd": null,
+  "rangeKm": 626,
+  "rangeStandard": "WLTP, tùy phiên bản",
+  "powerKw": 300,
+  "torqueNm": 620,
+  "batteryKwh": 123,
+  "chargingTime": "Đang cập nhật từ nguồn chính thức",
+  "dimensions": { "lengthMm": 5119, "widthMm": 2004, "heightMm": 1696 },
+  "wheelbaseMm": 3150,
+  "seats": 7,
+  "drivetrain": "AWD",
+  "safety": ["11 túi khí tùy phiên bản", "Camera 360", "Cân bằng điện tử", "Hỗ trợ phanh khẩn cấp"],
+  "adas": ["Ga tự động thích ứng", "Hỗ trợ giữ làn", "Hỗ trợ đỗ xe", "Cảnh báo điểm mù"],
+  "interiorComfort": ["Màn hình trung tâm", "Ghế thương gia tùy phiên bản", "Điều hòa đa vùng", "Cửa sổ trời toàn cảnh tùy phiên bản"],
+  "exteriorColors": ["Trắng", "Đen", "Xám", "Đỏ", "Xanh"],
+  "gallery": [
+    {
+      "type": "render-placeholder",
+      "label": "3D demo placeholder VF 9",
+      "alt": "Mô phỏng 3D placeholder cho VF 9, không phải model chính thức",
+      "url": null,
+      "license": "Generated primitives in-app",
+      "source": "VF Showcase Demo"
+    }
+  ],
+  "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf9.html",
+  "sourceName": "VinFast Việt Nam",
+  "sourceLastCheckedAt": "2026-04-27",
+  "confidenceScore": 1,
+  "notes": [
+    "Thông số đại diện theo bản seed demo; chi tiết cần xem nguồn chính thức theo từng phiên bản.",
+    "3D là placeholder hợp pháp, chưa đại diện hình học chính xác của VF 9."
+  ],
+  "fieldSources": {
+    "allSpecs": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf9.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "priceListedVnd": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf9.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "pending"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "modelId": "vf-8",
+  "slug": "vf-8",
+  "name": "VF 8",
+  "segment": "SUV hạng D",
+  "bodyStyle": "SUV 5 chỗ",
+  "versions": ["VF 8 Eco", "VF 8 Plus"],
+  "priceListedVnd": null,
+  "rangeKm": 471,
+  "rangeStandard": "WLTP, tùy phiên bản",
+  "powerKw": 300,
+  "torqueNm": 620,
+  "batteryKwh": 87.7,
+  "chargingTime": "Đang cập nhật từ nguồn chính thức",
+  "dimensions": { "lengthMm": 4750, "widthMm": 1934, "heightMm": 1667 },
+  "wheelbaseMm": 2950,
+  "seats": 5,
+  "drivetrain": "AWD",
+  "safety": ["11 túi khí tùy phiên bản", "Camera 360", "Cân bằng điện tử", "Hỗ trợ phanh khẩn cấp"],
+  "adas": ["Ga tự động thích ứng", "Hỗ trợ giữ làn", "Hỗ trợ lái trên cao tốc", "Cảnh báo điểm mù"],
+  "interiorComfort": ["Màn hình trung tâm", "Ghế chỉnh điện", "Điều hòa tự động", "Cửa sổ trời tùy phiên bản"],
+  "exteriorColors": ["Trắng", "Đen", "Xám", "Đỏ", "Xanh"],
+  "gallery": [
+    {
+      "type": "render-placeholder",
+      "label": "3D demo placeholder VF 8",
+      "alt": "Mô phỏng 3D placeholder cho VF 8, không phải model chính thức",
+      "url": null,
+      "license": "Generated primitives in-app",
+      "source": "VF Showcase Demo"
+    }
+  ],
+  "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf8.html",
+  "sourceName": "VinFast Việt Nam",
+  "sourceLastCheckedAt": "2026-04-27",
+  "confidenceScore": 1,
+  "notes": [
+    "Thông số đại diện theo bản seed demo; chi tiết cần xem nguồn chính thức theo từng phiên bản.",
+    "3D là placeholder hợp pháp, chưa đại diện hình học chính xác của VF 8."
+  ],
+  "fieldSources": {
+    "allSpecs": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf8.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "priceListedVnd": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-vf8.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "pending"
+    }
+  }
+}

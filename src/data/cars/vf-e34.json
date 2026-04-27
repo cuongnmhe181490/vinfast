@@ -1,0 +1,57 @@
+{
+  "modelId": "vf-e34",
+  "slug": "vf-e34",
+  "name": "VF e34",
+  "segment": "SUV/Crossover điện 5 chỗ",
+  "bodyStyle": "Crossover 5 chỗ",
+  "versions": ["VF e34"],
+  "priceListedVnd": null,
+  "rangeKm": 318.6,
+  "rangeStandard": "NEDC",
+  "powerKw": 110,
+  "torqueNm": 242,
+  "batteryKwh": 41.9,
+  "chargingTime": "Đang cập nhật từ nguồn chính thức",
+  "dimensions": { "lengthMm": 4300, "widthMm": 1768, "heightMm": 1613 },
+  "wheelbaseMm": 2611,
+  "seats": 5,
+  "drivetrain": "Dẫn động cầu trước",
+  "safety": ["Cân bằng điện tử", "Camera lùi", "Cảnh báo áp suất lốp"],
+  "adas": ["Cảnh báo điểm mù tùy cấu hình", "Cảnh báo phương tiện cắt ngang phía sau tùy cấu hình"],
+  "interiorComfort": ["Màn hình trung tâm", "Điều hòa tự động", "Kết nối ứng dụng thông minh"],
+  "exteriorColors": ["Trắng", "Đen", "Xám", "Đỏ", "Xanh"],
+  "gallery": [
+    {
+      "type": "render-placeholder",
+      "label": "3D demo placeholder VF e34",
+      "alt": "Mô phỏng 3D placeholder cho VF e34, không phải model chính thức",
+      "url": null,
+      "license": "Generated primitives in-app",
+      "source": "VF Showcase Demo"
+    }
+  ],
+  "sourceUrl": "https://vinfastauto.com/vn_vi/vfe34",
+  "sourceName": "VinFast Việt Nam",
+  "sourceLastCheckedAt": "2026-04-27",
+  "confidenceScore": 1,
+  "notes": [
+    "VF e34 có thể không còn là mẫu bán chủ lực; dữ liệu cần đối chiếu lại với trang chính thức.",
+    "3D là placeholder hợp pháp, chưa đại diện hình học chính xác của VF e34."
+  ],
+  "fieldSources": {
+    "allSpecs": {
+      "sourceUrl": "https://vinfastauto.com/vn_vi/vfe34",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "priceListedVnd": {
+      "sourceUrl": "https://vinfastauto.com/vn_vi/vfe34",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "pending"
+    }
+  }
+}

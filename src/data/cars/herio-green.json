@@ -1,0 +1,50 @@
+{
+  "modelId": "herio-green",
+  "slug": "herio-green",
+  "name": "Herio Green",
+  "segment": "Xe điện dịch vụ đô thị",
+  "bodyStyle": "Crossover/SUV đô thị",
+  "versions": ["Herio Green"],
+  "priceListedVnd": null,
+  "rangeKm": null,
+  "rangeStandard": null,
+  "powerKw": null,
+  "torqueNm": null,
+  "batteryKwh": null,
+  "chargingTime": "Đang cập nhật từ nguồn chính thức",
+  "dimensions": { "lengthMm": null, "widthMm": null, "heightMm": null },
+  "wheelbaseMm": null,
+  "seats": null,
+  "drivetrain": null,
+  "safety": [],
+  "adas": [],
+  "interiorComfort": [],
+  "exteriorColors": [],
+  "gallery": [
+    {
+      "type": "render-placeholder",
+      "label": "3D demo placeholder Herio Green",
+      "alt": "Mô phỏng 3D placeholder cho Herio Green, không phải model chính thức",
+      "url": null,
+      "license": "Generated primitives in-app",
+      "source": "VF Showcase Demo"
+    }
+  ],
+  "sourceUrl": "https://vinfastauto.com/vn_vi/vinfast-cong-bo-dong-xe-dien-green",
+  "sourceName": "VinFast Việt Nam",
+  "sourceLastCheckedAt": "2026-04-27",
+  "confidenceScore": 1,
+  "notes": [
+    "Đã tìm thấy nguồn chính thức về dòng Green, nhưng seed chưa trích xuất đủ thông số kỹ thuật theo model.",
+    "Các trường thiếu hiển thị là Đang cập nhật từ nguồn chính thức."
+  ],
+  "fieldSources": {
+    "allSpecs": {
+      "sourceUrl": "https://vinfastauto.com/vn_vi/vinfast-cong-bo-dong-xe-dien-green",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "pending"
+    }
+  }
+}

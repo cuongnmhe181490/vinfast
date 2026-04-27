@@ -1,0 +1,141 @@
+{
+  "modelId": "vf-3",
+  "slug": "vf-3",
+  "name": "VF 3",
+  "segment": "Ô tô điện mini đô thị",
+  "bodyStyle": "Mini car 2 cửa",
+  "versions": ["VF 3"],
+  "priceListedVnd": null,
+  "rangeKm": 210,
+  "rangeStandard": "NEDC",
+  "powerKw": 30,
+  "torqueNm": 110,
+  "batteryKwh": 18.64,
+  "chargingTime": "Đang cập nhật từ nguồn chính thức",
+  "dimensions": {
+    "lengthMm": 3190,
+    "widthMm": 1679,
+    "heightMm": 1622
+  },
+  "wheelbaseMm": 2075,
+  "seats": 4,
+  "drivetrain": "Dẫn động cầu sau",
+  "safety": ["Phanh ABS/EBD", "Túi khí", "Cảnh báo áp suất lốp"],
+  "adas": [],
+  "interiorComfort": ["Màn hình trung tâm", "Điều hòa", "Hàng ghế sau gập"],
+  "exteriorColors": ["Trắng", "Xám", "Đỏ", "Xanh", "Vàng"],
+  "gallery": [
+    {
+      "type": "render-placeholder",
+      "label": "3D demo placeholder VF 3",
+      "alt": "Mô phỏng 3D placeholder cho VF 3, không phải model chính thức",
+      "url": null,
+      "license": "Generated primitives in-app",
+      "source": "VF Showcase Demo"
+    }
+  ],
+  "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+  "sourceName": "VinFast Việt Nam",
+  "sourceLastCheckedAt": "2026-04-27",
+  "confidenceScore": 1,
+  "notes": [
+    "Thông số dùng cho demo được trích từ nguồn công khai chính thức ở mức có thể đối chiếu.",
+    "3D là placeholder dựng bằng primitives, không phải model CAD hay model thương mại chính thức của VinFast.",
+    "Giá niêm yết để null vì cần kiểm tra tại thời điểm người dùng ra quyết định."
+  ],
+  "fieldSources": {
+    "priceListedVnd": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "pending",
+      "notes": "Giá có thể thay đổi theo chính sách bán hàng, ưu đãi và thời điểm."
+    },
+    "rangeKm": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "powerKw": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "torqueNm": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "batteryKwh": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "dimensions": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "wheelbaseMm": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "seats": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "drivetrain": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "safety": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "adas": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "pending",
+      "notes": "Chưa xác thực ADAS riêng cho bản seed demo."
+    },
+    "interiorComfort": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    },
+    "exteriorColors": {
+      "sourceUrl": "https://shop.vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3.html",
+      "sourceName": "VinFast Việt Nam",
+      "sourceLastCheckedAt": "2026-04-27",
+      "confidenceScore": 1,
+      "status": "verified"
+    }
+  }
+}
