@@ -37,7 +37,7 @@ Trở thành showroom số 3D cho người dùng tìm hiểu xe VinFast theo cá
 
 ## Roadmap
 
-- Phase 1: static data + UI + 3D placeholder.
+- Phase 1: static data + UI + generated renders + CC0 generic 3D demo.
 - Phase 2: model thật/licensed + exploded view đầy đủ.
 - Phase 3: CMS + data checker.
 - Phase 4: personalization + AI tư vấn chọn xe.

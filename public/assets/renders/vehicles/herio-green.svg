@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title_herio_green desc_herio_green">
+  <title id="title_herio_green">Herio Green demo render</title>
+  <desc id="desc_herio_green">Ảnh render tự tạo cho website demo, không phải ảnh sản phẩm chính thức của VinFast.</desc>
+  <defs>
+    <linearGradient id="bg_herio_green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7fbff"/>
+      <stop offset="48%" stop-color="#e7f6ff"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="paint_herio_green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="52%" stop-color="#e8f7ef"/>
+      <stop offset="100%" stop-color="#dbeaf2"/>
+    </linearGradient>
+    <linearGradient id="glass_herio_green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dff4ff"/>
+      <stop offset="100%" stop-color="#0b2239"/>
+    </linearGradient>
+    <filter id="shadow_herio_green" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="30" stdDeviation="26" flood-color="#08213b" flood-opacity="0.20"/>
+    </filter>
+    <filter id="soft_herio_green" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" rx="54" fill="url(#bg_herio_green)"/>
+  <circle cx="990" cy="145" r="210" fill="#0f8f68" opacity="0.07"/>
+  <circle cx="250" cy="615" r="190" fill="#0077c8" opacity="0.06"/>
+  <ellipse cx="596" cy="584" rx="462" ry="58" fill="#072a4a" opacity="0.12" filter="url(#soft_herio_green)"/>
+  <g filter="url(#shadow_herio_green)">
+    <path d="M292 278 C370 186 580 184 710 284 L806 358 H230 Z" fill="url(#paint_herio_green)"/>
+    <path d="M150 386 C196 304 290 272 446 272 H720 C838 272 936 334 972 430 L990 490 H94 L122 420 C130 402 140 392 150 386 Z" fill="url(#paint_herio_green)"/>
+    <path d="M292 278 C370 186 580 184 710 284 L806 358 H230 Z" fill="#ffffff" opacity="0.28"/>
+    <path d="M342 286 C414 222 564 222 656 294 L716 352 H290 Z" fill="url(#glass_herio_green)" opacity="0.86"/>
+    <path d="M514 242 L514 354" stroke="#ffffff" stroke-width="10" opacity="0.72"/>
+    <path d="M188 406 L288 322" stroke="#ffffff" stroke-width="12" stroke-linecap="round" opacity="0.52"/>
+    <path d="M820 326 C902 350 952 398 974 468" stroke="#ffffff" stroke-width="12" stroke-linecap="round" opacity="0.52"/>
+    <path d="M242 472 H954" stroke="#0f8f68" stroke-width="8" stroke-linecap="round" opacity="0.95"/>
+    <path d="M786 412 H914" stroke="#e8fbff" stroke-width="10" stroke-linecap="round"/>
+    <path d="M168 430 H236" stroke="#e8fbff" stroke-width="10" stroke-linecap="round"/>
+    <g>
+      <circle cx="266" cy="516" r="78" fill="#07111e"/>
+      <circle cx="266" cy="516" r="48" fill="#e7f3f8"/>
+      <circle cx="266" cy="516" r="25" fill="#0f8f68"/>
+      <circle cx="841" cy="516" r="78" fill="#07111e"/>
+      <circle cx="841" cy="516" r="48" fill="#e7f3f8"/>
+      <circle cx="841" cy="516" r="25" fill="#0f8f68"/>
+    </g>
+  </g>
+  <g transform="translate(76 82)">
+    <rect width="310" height="96" rx="28" fill="#ffffff" opacity="0.74"/>
+    <text x="28" y="36" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="4" fill="#0077c8">XE ĐIỆN DỊCH VỤ ĐÔ THỊ</text>
+    <text x="28" y="76" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="850" fill="#042f5f">Herio Green</text>
+  </g>
+  <g transform="translate(788 618)">
+    <rect width="328" height="54" rx="27" fill="#ffffff" opacity="0.78"/>
+    <circle cx="34" cy="27" r="10" fill="#0f8f68"/>
+    <text x="56" y="34" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="750" fill="#042f5f">Demo render tự tạo - không chính thức</text>
+  </g>
+</svg>

@@ -1,18 +1,26 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ShieldCheck } from "lucide-react";
+import { getVehicleAssetManifest } from "@/data/asset-manifest";
 import type { CarModel } from "@/data/schemas/car.schema";
 import { formatSpec } from "@/lib/format";
 
 export function CarCard({ car }: { car: CarModel }) {
+  const manifest = getVehicleAssetManifest(car.modelId);
+
   return (
     <article className="group rounded-[28px] border border-line bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-soft">
       <div className="relative grid aspect-[1.55] place-items-center overflow-hidden rounded-[22px] bg-gradient-to-br from-accent-soft via-white to-surface-soft">
-        <div className="absolute inset-x-8 bottom-8 h-8 rounded-full bg-accent-strong/10 blur-xl" />
-        <div className="relative h-20 w-52 rounded-[50%] bg-white shadow-2xl">
-          <div className="absolute left-8 top-[-30px] h-16 w-36 rounded-t-[48px] bg-white/90 shadow-lg" />
-          <div className="absolute bottom-[-16px] left-8 h-10 w-10 rounded-full bg-accent-strong ring-8 ring-surface-soft" />
-          <div className="absolute bottom-[-16px] right-8 h-10 w-10 rounded-full bg-accent-strong ring-8 ring-surface-soft" />
-        </div>
+        <Image
+          src={manifest.renderImageUrl}
+          alt={`Ảnh render demo tự tạo cho ${car.name}, không phải ảnh chính thức của VinFast`}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover transition duration-500 group-hover:scale-[1.035]"
+        />
+        <span className="absolute bottom-3 right-3 rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold text-accent-strong backdrop-blur">
+          Demo render
+        </span>
       </div>
       <div className="mt-5 flex items-start justify-between gap-4">
         <div>

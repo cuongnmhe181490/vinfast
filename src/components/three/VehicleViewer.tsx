@@ -13,7 +13,7 @@ import {
   RotateCcw,
   SplitSquareHorizontal,
 } from "lucide-react";
-import type { VehicleHotspot } from "@/data/asset-manifest";
+import { getVehicleAssetManifest, type VehicleHotspot } from "@/data/asset-manifest";
 import type { CarModel } from "@/data/schemas/car.schema";
 import { ExplodedViewController } from "@/components/three/ExplodedViewController";
 import { Fallback3DCard } from "@/components/three/Fallback3DCard";
@@ -33,6 +33,7 @@ type VehicleViewerProps = {
 export function VehicleViewer({ car, compact = false }: VehicleViewerProps) {
   const [webglReady] = useState(detectWebglSupport);
   const [selectedHotspot, setSelectedHotspot] = useState<VehicleHotspot | null>(null);
+  const manifest = getVehicleAssetManifest(car.modelId);
   const {
     autoRotate,
     doorsOpen,
@@ -65,7 +66,7 @@ export function VehicleViewer({ car, compact = false }: VehicleViewerProps) {
       aria-label={`Trình xem 3D demo cho ${car.name}`}
     >
       <div className="absolute left-5 top-5 z-10 rounded-full bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-accent-strong backdrop-blur">
-        3D demo placeholder
+        {manifest.assetStatus === "licensed-demo" ? "3D demo CC0" : "3D demo placeholder"}
       </div>
       <ViewerErrorBoundary fallback={<Fallback3DCard car={car} reason="Trình 3D gặp lỗi runtime, fallback thông số đã được kích hoạt." />}>
         <Canvas

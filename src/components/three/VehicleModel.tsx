@@ -2,7 +2,9 @@
 
 import { type ReactNode, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Group, MathUtils, Vector3 } from "three";
+import { useGLTF } from "@react-three/drei";
+import { Group, Material, MathUtils, Mesh, Vector3 } from "three";
+import { getVehicleAssetManifest } from "@/data/asset-manifest";
 import type { CarModel } from "@/data/schemas/car.schema";
 import { PartLabel } from "@/components/three/PartLabel";
 import { useVehicleStore } from "@/components/three/vehicle-store";
@@ -101,32 +103,106 @@ function Wheel({ x, z }: { x: number; z: number }) {
   );
 }
 
+function getLicensedModelTransform(modelId: string, segment: string) {
+  const baseScale = segment.includes("hạng E") ? 1.86 : segment.includes("mini") ? 1.38 : 1.58;
+  const customScale: Record<string, number> = {
+    "limo-green": 1.7,
+    "vf-9": 1.86,
+    "vf-e34": 1.42,
+  };
+
+  return {
+    scale: customScale[modelId] ?? baseScale,
+    position: [0, -0.66, 0] as [number, number, number],
+    rotation: [0, Math.PI, 0] as [number, number, number],
+  };
+}
+
+function LicensedExteriorModel({
+  url,
+  modelId,
+  segment,
+  opacity,
+}: {
+  url: string;
+  modelId: string;
+  segment: string;
+  opacity: number;
+}) {
+  const { scene } = useGLTF(url);
+  const transform = getLicensedModelTransform(modelId, segment);
+  const clonedScene = useMemo(() => {
+    const clone = scene.clone(true);
+
+    clone.traverse((child) => {
+      if (!(child instanceof Mesh)) return;
+      const materials = Array.isArray(child.material) ? child.material : [child.material];
+      const clonedMaterials = materials.map((material) => {
+        const cloned = material.clone();
+        cloned.transparent = opacity < 0.98;
+        cloned.opacity = opacity;
+        cloned.depthWrite = opacity > 0.45;
+        if (cloned instanceof Material) cloned.needsUpdate = true;
+        return cloned;
+      });
+
+      child.material = Array.isArray(child.material) ? clonedMaterials : clonedMaterials[0];
+      child.castShadow = true;
+      child.receiveShadow = true;
+    });
+
+    return clone;
+  }, [opacity, scene]);
+
+  return (
+    <group position={transform.position} rotation={transform.rotation} scale={transform.scale}>
+      <primitive object={clonedScene} />
+    </group>
+  );
+}
+
 export function VehicleModel({ car }: { car: CarModel }) {
   const color = useVehicleStore((state) => state.color);
   const xray = useVehicleStore((state) => state.xray);
+  const explodeAmount = useVehicleStore((state) => state.explodeAmount);
+  const manifest = getVehicleAssetManifest(car.modelId);
   const scale = car.segment.includes("hạng E") ? 1.12 : car.segment.includes("mini") ? 0.82 : 1;
   const materialOpacity = xray ? 0.32 : 1;
+  const showTechnicalShell = !manifest.exteriorModelUrl || xray || explodeAmount > 0.08;
 
   return (
     <group scale={scale}>
-      <AnimatedPart base={[0, 0, 0]} exploded={[0, 0.08, 0]} label="Thân xe" labelPosition={[0, 1.25, 0]}>
-        <mesh castShadow receiveShadow position={[0, -0.04, 0]}>
-          <boxGeometry args={[2.08, 0.7, 3.75]} />
-          <meshStandardMaterial color={color} transparent opacity={materialOpacity} metalness={0.64} roughness={0.28} />
-        </mesh>
-        <mesh castShadow receiveShadow position={[0, 0.48, -0.14]}>
-          <boxGeometry args={[1.56, 0.74, 1.64]} />
-          <meshStandardMaterial color="#e8f3f8" transparent opacity={xray ? 0.18 : 0.82} metalness={0.2} roughness={0.18} />
-        </mesh>
-        <mesh position={[0, 0.62, 0.03]}>
-          <boxGeometry args={[1.38, 0.42, 1.28]} />
-          <meshStandardMaterial color="#102338" transparent opacity={xray ? 0.12 : 0.72} metalness={0.15} roughness={0.15} />
-        </mesh>
-        <mesh position={[0, -0.1, 1.92]}>
-          <boxGeometry args={[1.36, 0.07, 0.05]} />
-          <meshStandardMaterial color="#e8fbff" emissive="#80ecff" emissiveIntensity={0.35} />
-        </mesh>
-      </AnimatedPart>
+      {manifest.exteriorModelUrl ? (
+        <AnimatedPart base={[0, 0, 0]} exploded={[0, 0.18, 0]} label="Model 3D CC0" labelPosition={[0, 1.42, 0]}>
+          <LicensedExteriorModel
+            url={manifest.exteriorModelUrl}
+            modelId={car.modelId}
+            segment={car.segment}
+            opacity={xray ? 0.2 : explodeAmount > 0.08 ? 0.62 : 1}
+          />
+        </AnimatedPart>
+      ) : null}
+
+      {showTechnicalShell ? (
+        <AnimatedPart base={[0, 0, 0]} exploded={[0, 0.08, 0]} label="Thân xe" labelPosition={[0, 1.25, 0]}>
+          <mesh castShadow receiveShadow position={[0, -0.04, 0]}>
+            <boxGeometry args={[2.08, 0.7, 3.75]} />
+            <meshStandardMaterial color={color} transparent opacity={materialOpacity * 0.72} metalness={0.64} roughness={0.28} />
+          </mesh>
+          <mesh castShadow receiveShadow position={[0, 0.48, -0.14]}>
+            <boxGeometry args={[1.56, 0.74, 1.64]} />
+            <meshStandardMaterial color="#e8f3f8" transparent opacity={xray ? 0.18 : 0.42} metalness={0.2} roughness={0.18} />
+          </mesh>
+          <mesh position={[0, 0.62, 0.03]}>
+            <boxGeometry args={[1.38, 0.42, 1.28]} />
+            <meshStandardMaterial color="#102338" transparent opacity={xray ? 0.12 : 0.34} metalness={0.15} roughness={0.15} />
+          </mesh>
+          <mesh position={[0, -0.1, 1.92]}>
+            <boxGeometry args={[1.36, 0.07, 0.05]} />
+            <meshStandardMaterial color="#e8fbff" emissive="#80ecff" emissiveIntensity={0.35} />
+          </mesh>
+        </AnimatedPart>
+      ) : null}
 
       <AnimatedPart base={[0, 0, 0]} exploded={[0, -0.72, 0]} label="Pin sàn" labelPosition={[0, -0.72, 0]}>
         <mesh castShadow receiveShadow position={[0, -0.58, -0.08]}>

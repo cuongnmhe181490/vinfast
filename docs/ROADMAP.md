@@ -4,7 +4,7 @@
 
 - Static JSON data.
 - Premium UI shell.
-- 3D placeholder viewer.
+- 3D demo viewer with CC0 generic GLB assets.
 - Exploded view, interior camera, x-ray and hotspot interactions.
 - SEO routes, sitemap, robots and JSON-LD.
 

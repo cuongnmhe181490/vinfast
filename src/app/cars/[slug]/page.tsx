@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: CarPageProps): Promise<Metada
   if (!car) return {};
   return buildPageMetadata({
     title: `${car.name} 3D demo, thông số và nguồn dữ liệu`,
-    description: `Khám phá ${car.name} bằng 3D placeholder, bảng thông số có nguồn và so sánh xe.`,
+    description: `Khám phá ${car.name} bằng 3D demo CC0, render tự tạo, bảng thông số có nguồn và so sánh xe.`,
     path: `/cars/${car.slug}`,
   });
 }
@@ -40,7 +40,7 @@ export default async function CarDetailPage({ params }: CarPageProps) {
   const faq = [
     {
       question: `${car.name} trong website này có phải model 3D chính thức không?`,
-      answer: "Không. Đây là model placeholder dựng bằng primitives để demo hệ thống 3D, không phải model chính thức của VinFast.",
+      answer: "Không. Viewer dùng model GLB generic CC0 và các cụm kỹ thuật tự dựng để demo hệ thống 3D, không phải model chính thức của VinFast.",
     },
     {
       question: `Thông số ${car.name} lấy từ đâu?`,

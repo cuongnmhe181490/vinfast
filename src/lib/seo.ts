@@ -44,7 +44,7 @@ export function buildCarJsonLd(car: CarModel) {
       name: "VinFast",
     },
     category: car.segment,
-    description: `${car.name} trong showroom số demo, có thông số kèm nguồn chính thức và mô phỏng 3D placeholder.`,
+    description: `${car.name} trong showroom số demo, có thông số kèm nguồn chính thức, render tự tạo và mô phỏng 3D CC0.`,
     url: `${baseUrl}/cars/${car.slug}`,
     additionalProperty: [
       { "@type": "PropertyValue", name: "Quãng đường", value: car.rangeKm ?? "Đang cập nhật" },

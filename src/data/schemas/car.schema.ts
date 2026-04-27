@@ -10,7 +10,7 @@ export const sourceTraceSchema = z.object({
 });
 
 export const galleryItemSchema = z.object({
-  type: z.enum(["render-placeholder", "diagram", "official-link"]),
+  type: z.enum(["generated-render", "render-placeholder", "diagram", "official-link"]),
   label: z.string().min(2),
   alt: z.string().min(8),
   url: z.string().nullable(),
