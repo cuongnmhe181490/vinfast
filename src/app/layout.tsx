@@ -15,7 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vf-showcase-demo.local"),
+  metadataBase: new URL("https://vf-silk-seven.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "VF Showcase Demo | Showroom số 3D VinFast",
     template: "%s | VF Showcase Demo",

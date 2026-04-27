@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { CarModel } from "@/data/schemas/car.schema";
 
 const siteName = "VF Showcase Demo";
-const baseUrl = "https://vf-showcase-demo.local";
+export const baseUrl = "https://vf-silk-seven.vercel.app";
 
 export function buildPageMetadata({
   title,
@@ -37,7 +37,7 @@ export function buildPageMetadata({
 export function buildCarJsonLd(car: CarModel) {
   return {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": ["Product", "Vehicle"],
     name: car.name,
     brand: {
       "@type": "Brand",

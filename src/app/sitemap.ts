@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blog";
 import { getAllCars } from "@/lib/data-loader";
-
-const baseUrl = "https://vf-showcase-demo.local";
+import { baseUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/cars", "/compare", "/technology", "/battery-charging", "/safety", "/gallery", "/blog"];

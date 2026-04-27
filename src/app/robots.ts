@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { baseUrl } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://vf-showcase-demo.local/sitemap.xml",
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

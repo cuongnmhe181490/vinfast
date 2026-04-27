@@ -1,6 +1,6 @@
 "use client";
 
-import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
+import { ContactShadows, OrbitControls } from "@react-three/drei";
 import type { VehicleHotspot } from "@/data/asset-manifest";
 import type { CarModel } from "@/data/schemas/car.schema";
 import { getVehicleAssetManifest } from "@/data/asset-manifest";
@@ -25,7 +25,6 @@ export function VehicleScene({ car, onHotspotSelect }: VehicleSceneProps) {
       <ambientLight intensity={0.9} />
       <directionalLight position={[4, 6, 3]} intensity={2.6} castShadow shadow-mapSize={[1024, 1024]} />
       <pointLight position={[-4, 2, -3]} intensity={0.8} />
-      <Environment preset="city" />
       <VehicleModel car={car} />
       {manifest.hotspots.map((hotspot) => (
         <Hotspot key={hotspot.id} hotspot={hotspot} onSelect={onHotspotSelect} />

@@ -69,10 +69,10 @@ export function VehicleViewer({ car, compact = false }: VehicleViewerProps) {
       </div>
       <ViewerErrorBoundary fallback={<Fallback3DCard car={car} reason="Trình 3D gặp lỗi runtime, fallback thông số đã được kích hoạt." />}>
         <Canvas
-          shadows
+          shadows="basic"
           camera={{ position: [4.2, 2.4, 5.2], fov: 42 }}
           dpr={[1, 1.7]}
-          gl={{ antialias: true, powerPreference: "high-performance", preserveDrawingBuffer: true }}
+          gl={{ antialias: true, powerPreference: "high-performance" }}
           className="min-h-[460px]"
         >
           <Suspense fallback={null}>
